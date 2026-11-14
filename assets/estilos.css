@@ -1,0 +1,160 @@
+/* Identidad visual según el Manual Corporativo UNL
+   Colores corporativos: rojo 485C #BF0811 · verde 355C #4F8E3A · negro #211915 · azul #004C7B · verde 155-15C #648F39
+   Tipografía: Montserrat (títulos) y Arial (textos), tipografías web safe sin serifas. */
+:root {
+  --rojo: #BF0811;
+  --verde: #4F8E3A;
+  --verde-osc: #3d6f2d;
+  --verde-claro: #edf4ea;   /* verde al 15 % */
+  --verde2: #648F39;
+  --azul: #004C7B;
+  --azul-claro: #e5edf2;    /* azul al 15 % */
+  --negro: #211915;
+  --texto: #211915;
+  --gris: #5b5551;
+  --borde: #dde3da;
+  --titulos: "Montserrat", Arial, Helvetica, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: #ffffff; color: var(--texto); font: 16px/1.6 Arial, Helvetica, sans-serif; }
+h1, h2, h3, h4, .menu, .plan__nombre, .software__titulo, .boton, .fase__etiqueta, .plan__accesos, .paso, .esquema__item strong, .portada__formato span { font-family: var(--titulos); }
+img { max-width: 100%; }
+a { color: var(--azul); }
+.contenedor { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+/* Cabecera institucional: barra verde, marca en fondo blanco y menú azul */
+.cabecera { background: #fff; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,.10); }
+.barra-sup { background: var(--verde); color: #fff; font: 600 .75rem/1 var(--titulos); letter-spacing: .03em; }
+.barra-sup__fila { display: flex; justify-content: space-between; gap: 12px; padding-top: 7px; padding-bottom: 7px; }
+.marca { padding-top: 10px; padding-bottom: 10px; }
+.marca__enlace { display: inline-flex; align-items: center; text-decoration: none; color: var(--negro); }
+.marca__logo { height: 64px; width: auto; }
+.marca__nombre { margin-left: 16px; padding-left: 16px; border-left: 2px solid var(--negro); font-family: var(--titulos); line-height: 1.2; display: flex; flex-direction: column; justify-content: center; min-height: 52px; max-width: 360px; }
+.marca__nombre span { font-weight: 300; font-size: .9rem; }
+.marca__nombre strong { font-weight: 700; font-size: .98rem; }
+.menu { background: var(--azul); }
+.menu__fila { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.menu__fila::-webkit-scrollbar { display: none; }
+.menu a { color: #fff; text-decoration: none; font-weight: 600; font-size: .85rem; padding: 10px 12px; white-space: nowrap; border-bottom: 3px solid transparent; }
+.menu a:hover, .menu a:focus-visible { border-bottom-color: var(--rojo); background: rgba(255,255,255,.08); }
+@media (max-width: 760px) {
+  .cabecera { position: static; }
+  .barra-sup__fila span:last-child { display: none; }
+  .marca__logo { height: 48px; }
+  .marca__nombre { margin-left: 10px; padding-left: 10px; min-height: 40px; }
+  .marca__nombre span { font-size: .75rem; } .marca__nombre strong { font-size: .8rem; }
+  .menu { position: sticky; top: 0; z-index: 10; }
+}
+
+/* Portada: foto completa del campus + franja con el título */
+.portada { background: var(--azul); }
+.portada__foto { display: block; width: 100%; height: auto; max-height: 620px; object-fit: cover; object-position: center 45%; }
+.portada__franja { background: var(--azul); color: #fff; padding: 22px 0 46px; border-top: 5px solid var(--rojo); }
+.portada__fila { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.portada h1 { margin: 2px 0 8px; font-size: clamp(1.6rem, 3.6vw, 2.4rem); letter-spacing: .04em; text-transform: uppercase; line-height: 1.15; }
+.portada__antetitulo { margin: 0; font-size: .92rem; opacity: .9; }
+.portada__formato { margin: 0; font-size: .92rem; }
+.portada__formato span { display: inline-block; background: var(--verde); font-weight: 700; padding: 2px 10px; border-radius: 999px; margin-right: 6px; text-transform: uppercase; font-size: .8rem; letter-spacing: .04em; }
+@media (max-width: 620px) { .portada__franja { padding-bottom: 40px; } }
+
+/* Ficha de datos */
+.ficha { scroll-margin-top: 170px; background: #fff; border: 1px solid var(--borde); border-top: 5px solid var(--verde); border-radius: 12px; padding: 18px 20px; margin: -26px auto 34px; position: relative; box-shadow: 0 6px 18px rgba(0,0,0,.08); }
+.ficha dl { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; }
+.ficha__item--ancho { grid-column: 1 / -1; }
+.ficha dt { font-weight: 700; color: var(--azul); text-transform: uppercase; font-size: .78rem; letter-spacing: .03em; }
+.ficha dd { margin: 0; color: var(--texto); font-size: .95rem; }
+@media (max-width: 620px) { .ficha dl { grid-template-columns: 1fr; } }
+
+/* Secciones */
+.bloque { margin: 0 0 44px; scroll-margin-top: 170px; }
+.titulo-seccion { text-align: center; color: var(--azul); text-transform: uppercase; font-size: 1.35rem; letter-spacing: .03em; margin: 0 0 6px; }
+.titulo-seccion::after { content: ""; display: block; width: 70px; height: 4px; background: linear-gradient(90deg, var(--rojo) 50%, var(--verde) 50%); border-radius: 2px; margin: 8px auto 0; }
+.subtitulo { text-align: center; color: var(--gris); margin: 0 0 16px; font-size: .92rem; }
+.plan { border-top: 1px solid var(--borde); padding-top: 34px; }
+.plan__nombre { text-align: center; font-weight: 700; font-size: 1.15rem; margin: 10px 0 2px; color: var(--texto); }
+.plan__destrezas { background: var(--azul-claro); border-radius: 10px; padding: 12px 16px; font-size: .92rem; margin: 0 0 22px; }
+.plan__desarrollo { text-align: center; color: var(--azul); text-transform: uppercase; font-size: 1.05rem; margin: 0 0 18px; }
+.plan__desarrollo span { display: block; text-transform: none; font-weight: 500; font-size: .92rem; }
+
+/* Etapas del ciclo (ERCA: 4 fases · ACC: 3 momentos) */
+.etapa--experiencia { --c: #004C7B; }
+.etapa--reflexion { --c: #4F8E3A; }
+.etapa--conceptualizacion { --c: #BF0811; }
+.etapa--aplicacion { --c: #211915; }
+.etapa--anticipacion { --c: #004C7B; }
+.etapa--construccion { --c: #4F8E3A; }
+.etapa--consolidacion { --c: #BF0811; }
+.etapa { margin: 0 0 30px; }
+.etapa__titulo { color: #fff; background: var(--c); border-radius: 10px 10px 0 0; padding: 10px 16px; margin: 0; font-size: 1rem; letter-spacing: .03em; }
+.etapa__titulo span { font-weight: 500; text-transform: none; letter-spacing: 0; }
+.etapa__cuerpo { border: 2px solid var(--c); border-top: 0; border-radius: 0 0 10px 10px; padding: 16px; }
+.etapa__recursos { display: grid; gap: 18px; }
+.etapa__recursos--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 860px) { .etapa__recursos--2 { grid-template-columns: 1fr; } }
+.fase p { margin: 0 0 8px; font-size: .93rem; }
+.fase__etiqueta { display: inline-block; background: var(--verde-claro); color: var(--verde-osc); font-weight: 700; font-size: .75rem !important; text-transform: uppercase; letter-spacing: .04em; padding: 3px 10px; border-radius: 999px; }
+.fase__recurso { color: var(--azul); }
+.plan__accesos { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 0 18px; }
+.plan__accesos a { background: var(--c); color: #fff; text-decoration: none; font-weight: 700; font-size: .82rem; padding: 6px 14px; border-radius: 999px; }
+.plan__accesos a:hover, .plan__accesos a:focus-visible { filter: brightness(1.12); }
+.etapa { scroll-margin-top: 170px; }
+
+/* Esquema del formato */
+.esquema { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; align-items: center; background: #f7faf6; border: 1px solid var(--borde); border-radius: 14px; padding: 20px; }
+.esquema svg { width: 100%; height: auto; }
+.esquema__flechas path { fill: none; stroke: #9aa6ad; stroke-width: 3; }
+.esquema__nodos text { fill: #fff; font: 700 16px Montserrat, Arial, sans-serif; }
+.esquema__nodos a:hover rect, .esquema__nodos a:focus rect { filter: brightness(1.12); }
+.esquema__centro { fill: #fff; stroke: var(--borde); stroke-width: 2; }
+.esquema__centro-t { fill: var(--azul); font: 700 15px Montserrat, Arial, sans-serif; letter-spacing: .1em; }
+.esquema__centro-t--g { fill: var(--rojo); font-size: 26px; }
+.esquema__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.esquema__item a { display: flex; gap: 12px; align-items: flex-start; text-decoration: none; color: var(--texto); background: #fff; border-left: 5px solid var(--c); border-radius: 8px; padding: 10px 12px; font-size: .92rem; line-height: 1.45; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+.esquema__item strong { color: var(--c); text-transform: uppercase; font-size: .85rem; letter-spacing: .03em; display: block; }
+.esquema__item small { color: var(--gris); }
+.esquema__num { flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--c); color: #fff; font-weight: 700; display: grid; place-items: center; }
+.esquema--acc { grid-template-columns: 1fr; }
+.pasos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.paso a { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 118px; padding: 12px 34px; background: var(--c); color: #fff; text-decoration: none; clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%, 26px 50%); }
+.paso:first-child a { clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%); border-radius: 10px 0 0 10px; }
+.paso a strong { text-transform: uppercase; letter-spacing: .04em; font-size: 1.02rem; }
+.paso a > span:not(.paso__num) { font-size: .88rem; }
+.paso a small { font-size: .78rem; opacity: .85; margin-top: 4px; }
+.paso__num { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,.25); display: grid; place-items: center; font-weight: 700; margin-bottom: 4px; }
+.esquema__lista--acc { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 860px) {
+  .esquema { grid-template-columns: 1fr; padding: 14px; }
+  .pasos, .esquema__lista--acc { grid-template-columns: 1fr; }
+  .paso a, .paso:first-child a { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), 50% 100%, 0 calc(100% - 16px)); border-radius: 10px 10px 0 0; min-height: 0; padding: 12px 16px 24px; }
+}
+.ciclo-aviso { text-align: center; margin: -6px 0 26px; font-size: .9rem; color: var(--gris); }
+.ciclo-aviso strong { color: var(--azul); }
+
+/* Iframes */
+.marco { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #f4f6f3; border: 1px solid var(--borde); border-radius: 10px; overflow: hidden; }
+.marco--alto { aspect-ratio: 16 / 10; }
+.marco iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.marco--vacio, .marco--enlace { aspect-ratio: auto; min-height: 150px; display: grid; place-items: center; text-align: center; padding: 18px; color: var(--gris); font-size: .9rem; }
+.marco--vacio { border: 2px dashed #b9c8b0; background: repeating-linear-gradient(45deg, #fafcf9, #fafcf9 12px, #f3f7f1 12px, #f3f7f1 24px); }
+.marco__icono { display: block; font-size: 1.6rem; color: var(--verde); line-height: 1; margin-bottom: 6px; }
+.acciones { margin: 8px 0 0 !important; text-align: right; }
+.boton { display: inline-block; font-size: .85rem; font-weight: 700; text-decoration: none; padding: 7px 14px; border-radius: 8px; background: var(--azul); color: #fff; }
+.boton:hover, .boton:focus-visible { background: var(--rojo); }
+code { background: #eef2ec; padding: 1px 5px; border-radius: 4px; font-size: .85em; }
+
+/* Pie verde con la versión monocromática (blanca) del logotipo */
+.pie { background: var(--verde); color: #fff; margin: 28px 0 0; padding: 26px 16px 12px; }
+.pie__fila { max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+.pie__marca { flex: 1 1 260px; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; }
+.pie__logo { height: 76px; width: auto; }
+.pie__unidad { margin: 0; font: 600 .82rem var(--titulos); letter-spacing: .02em; }
+.pie__contacto { flex: 1 1 300px; font-style: normal; font-size: .9rem; line-height: 1.8; }
+.pie a { color: #fff; }
+.pie__derechos { text-align: center; font-size: .78rem; color: rgba(255,255,255,.8); margin: 18px 0 0; border-top: 1px solid rgba(255,255,255,.25); padding-top: 10px; }
+@media (max-width: 620px) { .pie__contacto { text-align: center; } }
+
+/* Recurso educativo digital */
+.software__titulo { text-align: center; color: var(--azul); font-weight: 700; font-size: 1.25rem; margin: 10px 0 4px; }
+.software { max-width: 560px; margin: 0 auto; }
+:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }

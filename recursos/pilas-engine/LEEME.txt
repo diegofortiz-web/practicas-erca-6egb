@@ -1,0 +1,3 @@
+Coloca aquí los archivos del juego exportado desde Pilas Engine (exportación en HTML).
+El archivo principal debe llamarse index.html.
+Luego, en datos.js, escribe en software.embed:  "recursos/pilas-engine/index.html"

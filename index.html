@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prácticas preprofesionales – UNL</title>
+  <meta name="description" content="Planificaciones microcurriculares y recursos digitales por fase del ciclo de aprendizaje. Carrera de Pedagogía de las Ciencias Experimentales Informática, UNL.">
+  <link rel="icon" href="assets/img/escudo-unl.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap">
+  <link rel="stylesheet" href="assets/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="barra-sup">
+      <div class="contenedor barra-sup__fila">
+        <span>Universidad Nacional de Loja</span>
+        <span>Unidad de Educación a Distancia y en Línea</span>
+      </div>
+    </div>
+    <div class="contenedor marca">
+      <a class="marca__enlace" href="#inicio" aria-label="Inicio">
+        <img class="marca__logo" src="assets/img/marca-unl.png" alt="Escudo y logotipo de la Universidad Nacional de Loja" width="600" height="301">
+        <span class="marca__nombre" id="carrera"></span>
+      </a>
+    </div>
+    <nav class="menu" aria-label="Secciones">
+      <div class="contenedor menu__fila" id="menu"></div>
+    </nav>
+  </header>
+
+  <section class="portada" id="inicio" aria-label="Portada">
+    <img class="portada__foto" src="assets/img/campus-unl.jpg" alt="Vista aérea de la Ciudad Universitaria Guillermo Falconí Espinosa de la Universidad Nacional de Loja" width="1600" height="931">
+    <div class="portada__franja">
+      <div class="contenedor portada__fila">
+        <div>
+          <p class="portada__antetitulo" id="institucion-corta"></p>
+          <h1 id="titulo"></h1>
+          <p class="portada__formato" id="formato"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="contenedor">
+    <section class="ficha" id="datos-practica" aria-label="Datos de la práctica">
+      <dl id="datos"></dl>
+    </section>
+
+    <section class="bloque" id="ciclo" aria-labelledby="t-ciclo">
+      <h2 class="titulo-seccion" id="t-ciclo"></h2>
+      <p class="subtitulo" id="ciclo-intro"></p>
+      <div id="ciclo-esquema"></div>
+    </section>
+
+    <section class="bloque" id="planificaciones" aria-labelledby="t-planif">
+      <h2 class="titulo-seccion" id="t-planif">Planificaciones microcurriculares</h2>
+      <p class="subtitulo" id="institucion"></p>
+      <div id="flipbook"></div>
+    </section>
+
+    <div id="planes"></div>
+
+    <section class="bloque" id="software-educativo" aria-labelledby="t-soft">
+      <h2 class="titulo-seccion" id="t-soft">Recurso educativo digital</h2>
+      <div id="software"></div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="pie__fila">
+      <div class="pie__marca">
+        <img src="assets/img/logo-unl-blanco.png" alt="Universidad Nacional de Loja" class="pie__logo" width="223" height="91">
+        <p class="pie__unidad">Unidad de Educación a Distancia y en Línea</p>
+      </div>
+      <address class="pie__contacto">
+        <strong>Ciudad Universitaria Guillermo Falconí Espinosa</strong><br>
+        Loja – Ecuador<br>
+        ☎ <strong>07 2593550</strong> (Opción 1 – Presencial)<br>
+        ☎ <strong>07 2593550</strong> (Opción 2 – Distancia)<br>
+        ✉ <strong><a href="mailto:comunicacion@unl.edu.ec">comunicacion@unl.edu.ec</a></strong><br>
+        📍 <a href="https://www.openstreetmap.org/?mlat=-4.03364&amp;mlon=-79.20311#map=17/-4.03364/-79.20311" target="_blank" rel="noopener"><strong>Ver ubicación en el mapa</strong></a>
+      </address>
+    </div>
+    <p class="pie__derechos">© <span id="anio">2026</span> Universidad Nacional de Loja. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="datos.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
