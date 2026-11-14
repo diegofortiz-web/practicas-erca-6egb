@@ -85,8 +85,10 @@
     </div>
     <p class="pie__derechos">© <span id="anio">2026</span> Universidad Nacional de Loja. Todos los derechos reservados.</p>
   </footer>
-
-    <script src="datos.js?v=2"></script>
-  <script src="assets/app.js"></script>
+        <script>
+    // Carga siempre la versión más reciente de datos.js (evita la caché del navegador)
+    document.write('<script src="datos.js?v=' + Date.now() + '"><\/script>');
+    document.write('<script src="assets/app.js?v=' + Date.now() + '"><\/script>');
+  </script>
 </body>
 </html>
