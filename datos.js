@@ -30,9 +30,9 @@ const PRACTICA = {
   datos: [
     ["Tema", "Planificación curricular en las instituciones educativas (diseño y planificación de modelos microcurriculares en Informática para los contextos formales y no formales, orientados a la elaboración de material digital para el aprendizaje). Septiembre 2025 – febrero 2026 · 80 horas de prácticas preprofesionales de la asignatura."],
     ["Director UEDL – UNL", "Dr. Milton Mejía Balcázar"],
-    ["Encargado de la gestión académica", "Mg.Sc. Diego Fernando Paqui Abrigo"],
+    ["Encargado de la gestión académica", "Mgtr. Luis Alberto Chicaiza González"],
     ["Docente tutor académico de prácticas", "Mgtr. Diego Fernando Ortiz Cango"],
-    ["Estudiante", "Nombre y apellido del estudiante"],
+    ["Estudiante", "NOMBRES Y APELLIDOS DEL ESTUDIANTE"],
     ["Ciclo", "5"],
     ["Paralelo", "A"]
   ],
