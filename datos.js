@@ -166,12 +166,12 @@ const PRACTICA = {
   // Opción A (recomendada): exporta el juego desde Pilas Engine como HTML, descomprímelo
   //   en la carpeta  recursos/pilas-engine/  y deja embed: "recursos/pilas-engine/index.html"
   // Opción B: si el juego está publicado en internet, pega aquí su enlace.
-  software: {
+    software: {
     titulo: "Software educativo",
     descripcion: "Juego educativo elaborado en Pilas Engine como recurso educativo digital de la práctica.",
     plataforma: "Pilas Engine",
-    embed: "",
-    enlace: "",
+    embed: "recursos/pilas-engine/proyecto/index.html",
+    enlace: "recursos/pilas-engine/proyecto/index.html",
     proporcion: "4 / 3"
   }
 };
