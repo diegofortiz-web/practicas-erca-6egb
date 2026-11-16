@@ -205,14 +205,19 @@ code { background: #eef2ec; padding: 1px 5px; border-radius: 4px; font-size: .85
 
 /* Pie verde con la versión monocromática (blanca) del logotipo */
 .pie { background: var(--verde); color: #fff; margin: 28px 0 0; padding: 26px 16px 12px; }
-.pie__fila { max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
-.pie__marca { flex: 1 1 260px; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; }
-.pie__logo { height: 58px; width: auto; }
-.pie__unidad { margin: 0; font: 600 .82rem var(--titulos); letter-spacing: .02em; }
-.pie__contacto { flex: 1 1 300px; font-style: normal; font-size: .9rem; line-height: 1.8; }
+.pie__fila { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 28px; }
+.pie__marca { display: flex; align-items: center; padding: 12px 0; }
+.pie__marca--izq { justify-content: flex-start; }
+.pie__marca--der { justify-content: flex-end; }
+.pie__logo { height: auto; width: 100%; max-width: 280px; }
+.pie__contacto { font-style: normal; font-size: .9rem; line-height: 1.8; text-align: center; }
 .pie a { color: #fff; }
 .pie__derechos { text-align: center; font-size: .78rem; color: rgba(255,255,255,.8); margin: 18px 0 0; border-top: 1px solid rgba(255,255,255,.25); padding-top: 10px; }
-@media (max-width: 620px) { .pie__contacto { text-align: center; } }
+@media (max-width: 900px) {
+  .pie__fila { grid-template-columns: 1fr; gap: 10px; }
+  .pie__marca--izq, .pie__marca--der { justify-content: center; }
+  .pie__logo { max-width: 250px; }
+}
 
 /* Recurso educativo digital */
 .software__titulo { text-align: center; color: var(--azul); font-weight: 700; font-size: 1.25rem; margin: 10px 0 4px; }
