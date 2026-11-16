@@ -52,10 +52,9 @@
   }
 
   // Cabecera, portada y datos
-  const carrera = String(P.carrera || '');
-  const m = carrera.match(/^(Carrera de)\s+(.*)$/i);
-  $('carrera').innerHTML = m ? `<span>${esc(m[1])}</span><strong>${esc(m[2])}</strong>` : `<strong>${esc(carrera)}</strong>`;
-  $('titulo').textContent = P.titulo || '';
+  const E = P.encabezado || {};
+  $('enc-titulo').textContent = E.titulo || P.titulo || '';
+  const etq = $('enc-etiqueta'); if (E.etiqueta) etq.textContent = E.etiqueta; else etq.remove();
   const I = P.institucion || {};
   $('institucion-corta').textContent = [I.nombre, I.asignatura, I.grado && I.grado.split('·')[0].trim()].filter(Boolean).join(' · ');
   $('institucion').textContent = [I.nombre, I.asignatura, I.grado, I.unidad, I.anio].filter(Boolean).join(' · ');
@@ -96,9 +95,63 @@
 
   // Menú
   const planes = P.planificaciones || [];
-  $('menu').innerHTML = ['<a href="#inicio">Inicio</a>', `<a href="#ciclo">${esc(CICLO.corto)}</a>`, '<a href="#planificaciones">Planificaciones</a>']
-    .concat(planes.map((pl) => `<a href="#plan-${esc(pl.numero)}">Planificación ${esc(pl.numero)}</a>`))
-    .concat(P.software ? ['<a href="#software-educativo">Recurso educativo digital</a>'] : []).join('');
+  const subPlanes = planes.map((pl) => `<li><a href="#plan-${esc(pl.numero)}">Planificación ${esc(pl.numero)}</a></li>`).join('');
+  $('menu').innerHTML = `<ul class="menu__lista">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#datos-practica">La práctica</a></li>
+      <li><a href="#ciclo">${esc(CICLO.corto)}</a></li>
+      <li class="menu__grupo"><a href="#planificaciones">Planificaciones</a><ul class="menu__sub">${subPlanes}</ul></li>
+      ${P.software ? '<li><a href="#software-educativo">Recurso educativo digital</a></li>' : ''}
+    </ul>`;
+
+  // Menú en celular
+  const botonMenu = $('menu-boton'), cab = $('cabecera');
+  botonMenu.addEventListener('click', () => {
+    const abierto = cab.classList.toggle('cabecera--abierta');
+    botonMenu.setAttribute('aria-expanded', abierto); botonMenu.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
+  });
+  $('menu').addEventListener('click', (e) => { if (e.target.closest('a')) { cab.classList.remove('cabecera--abierta'); botonMenu.setAttribute('aria-expanded', false); } });
+  // Cabecera transparente sobre el carrusel y azul al desplazarse
+  const alDesplazar = () => cab.classList.toggle('cabecera--solida', cab.getBoundingClientRect().top <= 0 && window.scrollY > document.querySelector('.encabezado').offsetHeight + 20);
+  window.addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
+
+  // Carrusel de portada
+  const diapos = (P.portada || []).filter((d) => d && d.imagen);
+  if (diapos.length) {
+    $('carrusel').innerHTML = diapos.map((d, k) => `<article class="diapo${k === 0 ? ' diapo--activa' : ''}" role="group" aria-roledescription="diapositiva" aria-label="${k + 1} de ${diapos.length}" ${k ? 'aria-hidden="true"' : ''}>
+        <img class="diapo__img" src="${esc(d.imagen)}" alt="${esc(d.alt || '')}" ${k ? 'loading="lazy"' : 'fetchpriority="high"'}>
+        <div class="contenedor diapo__contenido"><div class="diapo__panel">
+          ${k === 0 ? `<h1 class="diapo__titulo">${esc(d.titulo || '')}</h1>` : `<h2 class="diapo__titulo">${esc(d.titulo || '')}</h2>`}
+          ${d.texto ? `<p class="diapo__texto">${esc(d.texto)}</p>` : ''}
+          ${d.destino ? `<a class="diapo__boton" href="${esc(d.destino)}" ${k ? 'tabindex="-1"' : ''}>${esc(d.boton || 'Leer más')} <span aria-hidden="true">&gt;&gt;</span></a>` : ''}
+        </div></div></article>`).join('');
+    $('car-puntos').innerHTML = diapos.map((d, k) => `<button type="button" class="carrusel__punto${k === 0 ? ' carrusel__punto--activo' : ''}" aria-label="Ver imagen ${k + 1}"></button>`).join('');
+    const items = [...document.querySelectorAll('.diapo')], puntos = [...document.querySelectorAll('.carrusel__punto')];
+    let actual = 0, temporizador = null;
+    const ir = (n) => {
+      actual = (n + items.length) % items.length;
+      items.forEach((it, k) => {
+        const on = k === actual; it.classList.toggle('diapo--activa', on);
+        on ? it.removeAttribute('aria-hidden') : it.setAttribute('aria-hidden', 'true');
+        const b = it.querySelector('.diapo__boton'); if (b) on ? b.removeAttribute('tabindex') : b.setAttribute('tabindex', '-1');
+      });
+      puntos.forEach((p, k) => p.classList.toggle('carrusel__punto--activo', k === actual));
+    };
+    const reducir = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const iniciar = () => { if (!reducir && items.length > 1) { clearInterval(temporizador); temporizador = setInterval(() => ir(actual + 1), 6000); } };
+    const detener = () => clearInterval(temporizador);
+    $('car-ant').addEventListener('click', () => { ir(actual - 1); iniciar(); });
+    $('car-sig').addEventListener('click', () => { ir(actual + 1); iniciar(); });
+    puntos.forEach((p, k) => p.addEventListener('click', () => { ir(k); iniciar(); }));
+    const car = $('inicio');
+    car.addEventListener('mouseenter', detener); car.addEventListener('mouseleave', iniciar);
+    car.addEventListener('focusin', detener); car.addEventListener('focusout', iniciar);
+    let x0 = null;
+    car.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    car.addEventListener('touchend', (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) { ir(actual + (dx < 0 ? 1 : -1)); iniciar(); } x0 = null; });
+    if (items.length < 2) { $('car-ant').hidden = $('car-sig').hidden = true; }
+    iniciar();
+  }
 
   // Planificaciones según el ciclo elegido
   // Cada fase o momento admite un recurso (campos recurso/plataforma/embed/enlace)
