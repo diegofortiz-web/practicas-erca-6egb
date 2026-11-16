@@ -27,6 +27,40 @@ const PRACTICA = {
   carrera: "Carrera de Pedagogía de las Ciencias Experimentales Informática",
   universidad: "Universidad Nacional de Loja",
   titulo: "Prácticas preprofesionales",
+   
+  // Encabezado superior (modelo mailing institucional): título y recuadro rojo.
+  encabezado: {
+    titulo: "Prácticas preprofesionales",
+    etiqueta: "Quinto ciclo"
+  },
+
+  // Carrusel de portada: las imágenes van en assets/img/
+  portada: [
+    {
+      imagen: "assets/img/portada-1.jpg",
+      alt: "Estudiantes trabajan en equipo frente a una computadora portátil",
+      titulo: "Prácticas preprofesionales",
+      texto: "Diseñamos planificaciones microcurriculares de Informática y elaboramos material digital para el aprendizaje en contextos formales y no formales.",
+      boton: "Leer más",
+      destino: "#datos-practica"
+    },
+    {
+      imagen: "assets/img/portada-2.jpg",
+      alt: "Estudiantes de la Unidad de Educación a Distancia y en Línea frente al edificio UED",
+      titulo: "Planificaciones microcurriculares",
+      texto: "Tres planificaciones de Informática Educativa para sexto grado de EGB en las Escuelas Municipales de Loja, organizadas según las cuatro fases del ciclo ERCA: Experiencia, Reflexión, Conceptualización y Aplicación.",
+      boton: "Leer más",
+      destino: "#planificaciones"
+    },
+    {
+      imagen: "assets/img/portada-3.jpg",
+      alt: "Estudiantes salen del edificio de la Unidad de Educación a Distancia",
+      titulo: "Recursos educativos digitales",
+      texto: "Videos, juegos, presentaciones, cuestionarios y un software educativo en Pilas Engine para cada fase del aprendizaje.",
+      boton: "Leer más",
+      destino: "#ciclo"
+    }
+  ],
   datos: [
     ["Tema", "Planificación curricular en las instituciones educativas (diseño y planificación de modelos microcurriculares en Informática para los contextos formales y no formales, orientados a la elaboración de material digital para el aprendizaje) septiembre 2026 – febrero 2027 · 80 horas de prácticas preprofesionales de la asignatura."],
     ["Director UEDL – UNL", "Dr. Milton Mejía Balcázar"],
