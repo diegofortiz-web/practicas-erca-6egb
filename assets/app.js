@@ -119,7 +119,7 @@
   const diapos = (P.portada || []).filter((d) => d && d.imagen);
   if (diapos.length) {
     $('carrusel').innerHTML = diapos.map((d, k) => `<article class="diapo${k === 0 ? ' diapo--activa' : ''}" role="group" aria-roledescription="diapositiva" aria-label="${k + 1} de ${diapos.length}" ${k ? 'aria-hidden="true"' : ''}>
-        <img class="diapo__img" src="${esc(d.imagen)}" alt="${esc(d.alt || '')}" ${k ? 'loading="lazy"' : 'fetchpriority="high"'}>
+        <img class="diapo__img" src="${esc(d.imagen)}" alt="${esc(d.alt || '')}"${d.posicion ? ` style="object-position:${esc(d.posicion)}"` : ''} ${k ? 'loading="lazy"' : 'fetchpriority="high"'}>
         <div class="contenedor diapo__contenido"><div class="diapo__panel">
           ${k === 0 ? `<h1 class="diapo__titulo">${esc(d.titulo || '')}</h1>` : `<h2 class="diapo__titulo">${esc(d.titulo || '')}</h2>`}
           ${d.texto ? `<p class="diapo__texto">${esc(d.texto)}</p>` : ''}
