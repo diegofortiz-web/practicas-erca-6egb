@@ -54,8 +54,8 @@ const PRACTICA = {
     },
     {
       imagen: "assets/img/portada-3.jpg",
-      alt: "Estudiantes salen del edificio de la Unidad de Educación a Distancia",
-      titulo: "Recursos educativos digitales",
+      posicion: "68% center",
+      alt: "Docente con una computadora portátil junto a niños que trabajan en el laboratorio de computación",
       texto: "Videos, juegos, presentaciones, cuestionarios y un software educativo en Pilas Engine para cada fase del aprendizaje.",
       boton: "Leer más",
       destino: "#ciclo"
